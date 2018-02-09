@@ -10,7 +10,7 @@ Forwarded: no
 --- a/etc/systemd/system/zfs-zed.service.in
 +++ b/etc/systemd/system/zfs-zed.service.in
 @@ -5,7 +5,7 @@ After=zfs-import-cache.service
- After=zfs-import-scan.service
+ After=zfs-import.target
  
  [Service]
 -ExecStart=@sbindir@/zed -F
