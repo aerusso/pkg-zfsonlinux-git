@@ -1,0 +1,14 @@
+#!/bin/sh
+
+set -e
+
+cat <<EOF >/usr/local/bin/dkms
+#!/bin/sh
+set -e
+/usr/sbin/dkms --force "\$@"
+EOF
+chmod +x /usr/local/bin/dkms
+
+/usr/lib/dkms/dkms-autopkgtest
+
+rm --force /usr/local/bin/dkms

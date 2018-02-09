@@ -1,0 +1,158 @@
+spl-linux (0.7.5-1) unstable; urgency=medium
+
+  * Add libelf-dev to Depends (Closes: #886453)
+  * New upstream version 0.7.5 (Closes: #886453)
+
+ -- Aron Xu <aron@debian.org>  Fri, 19 Jan 2018 15:23:26 +0800
+
+spl-linux (0.7.4-1) unstable; urgency=medium
+
+  * New upstream version 0.7.4 (Closes: #883830)
+  * Update stdver to 4.1.2, no change required
+
+ -- Aron Xu <aron@debian.org>  Mon, 18 Dec 2017 22:05:32 +0800
+
+spl-linux (0.7.3-1) unstable; urgency=medium
+
+  * New upstream version 0.7.3
+
+ -- Aron Xu <aron@debian.org>  Tue, 31 Oct 2017 17:29:08 +0800
+
+spl-linux (0.6.5.11-1) unstable; urgency=medium
+
+  * Imported Upstream version 0.6.5.11
+
+ -- Aron Xu <aron@debian.org>  Fri, 14 Jul 2017 14:39:21 +0800
+
+spl-linux (0.6.5.10-1) unstable; urgency=medium
+
+  * New upstream version 0.6.5.10
+
+ -- Aron Xu <aron@debian.org>  Wed, 05 Jul 2017 18:00:58 +0800
+
+spl-linux (0.6.5.9-1) unstable; urgency=medium
+
+  * Imported Upstream version 0.6.5.9
+
+ -- Aron Xu <aron@debian.org>  Mon, 06 Feb 2017 15:52:47 +0800
+
+spl-linux (0.6.5.8-3) unstable; urgency=medium
+
+  * Fix Linux 4.9 compatibility (Closes: #851352)
+    Thanks to Fabian Grünbichler!
+
+ -- Aron Xu <aron@debian.org>  Tue, 17 Jan 2017 20:57:13 +0800
+
+spl-linux (0.6.5.8-2) unstable; urgency=medium
+
+  [ Petter Reinholdtsen ]
+  * Added d/gbp.conf to enforce the use of pristine-tar.
+  * Added extra autopkgtest script check.sh from the Ubuntu package.
+
+  [ Aron Xu ]
+  * Make use of dh-autoreconf
+  * Deal with /etc/hostid in postinst of spl package
+  * Add lintian-overrides: extra-license-file
+  * Simplify rules by merging Ubuntu one
+  * Handle the case /etc/hostid is being wrongly marked as conffile
+  * Install man pages for spl
+  * Move command-with-path-in-maintainer-script override to spl
+
+ -- Aron Xu <aron@debian.org>  Wed, 28 Sep 2016 05:02:06 +0800
+
+spl-linux (0.6.5.8-1) unstable; urgency=medium
+
+  [ Petter Reinholdtsen ]
+  * Fix invalid command in dkms (Closes: #836578)
+
+  [ Zhou Mo ]
+  * control: bump standards version to 3.9.8
+
+  [ Aron Xu ]
+  * Imported Upstream version 0.6.5.8 (Closes: #835992)
+  * rules: allow parallel building
+
+ -- Aron Xu <aron@debian.org>  Sun, 18 Sep 2016 01:06:04 +0800
+
+spl-linux (0.6.5.7-1) unstable; urgency=medium
+
+  * Imported Upstream version 0.6.5.7
+
+ -- Aron Xu <aron@debian.org>  Wed, 25 May 2016 12:17:05 +0800
+
+spl-linux (0.6.5.6-2) unstable; urgency=medium
+
+  * Add license names to entries missing it.
+  * Added autopkgtest using code from Ubuntu using dkms >= 2.2.0.3-3~.
+
+ -- Petter Reinholdtsen <pere@hungry.com>  Thu, 28 Apr 2016 20:21:29 +0800
+
+spl-linux (0.6.5.6-1) unstable; urgency=medium
+
+  * New upstream release
+
+ -- Aron Xu <aron@debian.org>  Thu, 24 Mar 2016 07:14:47 +0800
+
+spl-linux (0.6.5.5-1) unstable; urgency=medium
+
+  * New upstream release
+
+ -- Aron Xu <aron@debian.org>  Sun, 20 Mar 2016 22:50:26 +0800
+
+spl-linux (0.6.5.4-1) unstable; urgency=medium
+
+  * New upstream release
+
+ -- Aron Xu <aron@debian.org>  Sun, 10 Jan 2016 20:13:15 +0800
+
+spl-linux (0.6.5.3-1) unstable; urgency=medium
+
+  * New upstream release
+
+ -- Aron Xu <aron@debian.org>  Thu, 05 Nov 2015 21:08:25 +0800
+
+spl-linux (0.6.5.2-1) unstable; urgency=medium
+
+  * Imported Upstream version 0.6.5.2
+  * Add conflicts to splat (Closes: #769147)
+
+ -- Aron Xu <aron@debian.org>  Tue, 13 Oct 2015 15:26:33 +0100
+
+spl-linux (0.6.4.2-1) experimental; urgency=medium
+
+  * New upstream release.
+
+ -- Aron Xu <aron@debian.org>  Thu, 13 Aug 2015 19:58:26 +0800
+
+spl-linux (0.6.4.1-1) experimental; urgency=medium
+
+  * New upstream release.
+
+ -- Aron Xu <aron@debian.org>  Sun, 17 May 2015 05:47:51 +0800
+
+spl-linux (0.6.2-2) experimental; urgency=low
+
+  * Add file and libc-dev to Depends of spl-dkms (Closes: #717565).
+
+ -- Aron Xu <aron@debian.org>  Sun, 25 Aug 2013 02:02:15 +0800
+
+spl-linux (0.6.2-1) experimental; urgency=low
+
+  * New upstream release.
+
+ -- Aron Xu <aron@debian.org>  Sat, 24 Aug 2013 14:30:25 +0800
+
+spl-linux (0.6.1-2) experimental; urgency=low
+
+  * Add license info for scripts/kmodtool
+  * Add linux 3.10 compatibility patch from upstream. (Closes: #717565)
+  * Add facility to build udeb and binary modules, thanks Turbo Fredriksson
+    for the work.
+
+ -- Aron Xu <aron@debian.org>  Mon, 29 Jul 2013 16:04:24 +0800
+
+spl-linux (0.6.1-1) experimental; urgency=low
+
+  * Initial Release (Closes: #686453)
+
+ -- Aron Xu <aron@debian.org>  Tue, 02 Apr 2013 01:03:05 +0200

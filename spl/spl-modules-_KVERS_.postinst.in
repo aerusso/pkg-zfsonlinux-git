@@ -1,0 +1,7 @@
+#!/bin/sh
+set -e
+
+# Run depmod after module installation.
+depmod
+
+#DEBHELPER#

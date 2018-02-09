@@ -1,0 +1,3 @@
+Tests: dkms-test check.sh
+Restrictions: needs-root, allow-stderr, isolation-machine
+Depends: dkms

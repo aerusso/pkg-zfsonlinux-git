@@ -1,0 +1,113 @@
+#!/usr/bin/make -f
+
+NAME := $(shell awk '$$1 == "Name:" { print $$2; }' META)
+VERSION := $(shell dpkg-parsechangelog \
+  | awk '$$1 == "Version:" { print $$2; }' | cut -d- -f1)
+REVISION := $(shell dpkg-parsechangelog \
+  | awk '$$1 == "Version:" { print $$2; }' | cut -d- -f2-)
+
+ifndef DEB_HOST_ARCH
+DEB_HOST_ARCH = $(shell dpkg-architecture -qDEB_HOST_ARCH)
+endif
+
+ifndef KVERS
+KVERS=$(shell uname -r)
+endif
+
+non_epoch_version=$(shell echo $(KVERS) | perl -pe 's/^\d+://')
+PACKAGE=spl
+pmodules = $(PACKAGE)-modules-$(non_epoch_version)
+
+%:
+	dh $@ --with dkms,autoreconf --parallel
+
+override_dh_auto_configure:
+	@cp debian/control.in debian/control
+
+	@# Embed the downstream version in the module.
+	@sed \
+	  -e 's/^Version:.*/Version:      $(VERSION)/' \
+	  -e 's/^Release:.*/Release:      $(REVISION)/' \
+	  -i.orig META
+
+	@# Build the userland, but don't build the kernel modules.
+	dh_auto_configure -- --with-config=user --disable-debug-kmem
+
+override_dh_auto_test:
+	# scripts/check.sh tries insmod and rmmod, so it cannot
+	# run in an unprivileged build environment.
+
+override_dh_auto_install:
+	@# Install the utilities.
+	$(MAKE) install DESTDIR='$(CURDIR)/debian/tmp'
+
+	@# Get a bare copy of the source code.
+	@# This creates the $(CURDIR)/$(NAME)-$(VERSION)/ tree.
+	$(MAKE) distdir
+
+	@# This shunt allows DKMS to install the Module.symvers and spl_config.h
+	@# files to the ${dkms_tree} area through the POST_INSTALL directive.
+	echo '#!/bin/sh'  >'$(CURDIR)/$(NAME)-$(VERSION)/cp'
+	echo 'cp "$$@"'  >>'$(CURDIR)/$(NAME)-$(VERSION)/cp'
+	chmod 755 '$(CURDIR)/$(NAME)-$(VERSION)/cp'
+
+	# Install the DKMS source.
+	mkdir -p '$(CURDIR)/debian/tmp/usr/src/'
+	mv '$(CURDIR)/$(NAME)-$(VERSION)' '$(CURDIR)/debian/tmp/usr/src/'
+
+override_dh_dkms:
+	dh_dkms -V $(VERSION)
+
+override_dh_auto_clean:
+	dh_auto_clean
+	@if test -e META.orig; then mv META.orig META; fi
+	cp debian/control.in debian/control
+
+# ------------
+
+override_dh_prep-deb-files:
+	for templ in $(wildcard $(CURDIR)/debian/*_KVERS_*.in); do \
+		sed -e 's/##KVERS##/$(KVERS)/g ; s/#KVERS#/$(KVERS)/g ; s/_KVERS_/$(KVERS)/g ; s/##KDREV##/$(KDREV)/g ; s/#KDREV#/$(KDREV)/g ; s/_KDREV_/$(KDREV)/g ;  s/_ARCH_/$(DEB_HOST_ARCH)/g' \
+		< $$templ > `echo $$templ | sed -e 's/_KVERS_/$(KVERS)/g ; s/_ARCH_/$(DEB_HOST_ARCH)/g ; s/\.in$$//'` ; \
+	done
+	sed -e 's/##KVERS##/$(KVERS)/g ; s/#KVERS#/$(KVERS)/g ; s/_KVERS_/$(KVERS)/g ; s/##KDREV##/$(KDREV)/g ; s/#KDREV#/$(KDREV)/g ; s/_KDREV_/$(KDREV)/g ; s/_ARCH_/$(DEB_HOST_ARCH)/g' \
+	< debian/control.modules.in > debian/control
+
+override_dh_configure_modules: override_dh_configure_modules_stamp
+override_dh_configure_modules_stamp:
+	./configure --with-config=kernel --with-linux=$(KSRC) \
+		--with-linux-obj=$(KOBJ) \
+		--disable-debug-kmem
+	touch override_dh_configure_modules_stamp
+
+override_dh_binary-modules-udeb: override_dh_prep-deb-files override_dh_configure_modules
+	dh_testdir
+	dh_testroot
+	dh_prep
+
+	$(MAKE) -C $(CURDIR)/module modules
+
+	dh_installdirs -p${pmodules}-di
+	dh_install -p${pmodules}-di
+	dh_gencontrol -p${pmodules}-di
+
+	dh_builddeb -p${pmodules}-di
+
+override_dh_binary-modules: override_dh_prep-deb-files override_dh_configure_modules
+	dh_testdir
+	dh_testroot
+	dh_prep
+
+	$(MAKE) -C $(CURDIR)/module modules
+
+	dh_installdocs -p${pmodules}
+	dh_install -p${pmodules}
+	dh_installchangelogs -p${pmodules}
+	dh_compress -p${pmodules}
+	dh_strip -p${pmodules}
+	dh_fixperms -p${pmodules}
+	dh_installdeb -p${pmodules}
+	dh_gencontrol -p${pmodules}
+	dh_md5sums -p${pmodules}
+
+	dh_builddeb -p${pmodules}
