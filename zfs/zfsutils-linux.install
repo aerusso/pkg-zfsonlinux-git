@@ -19,7 +19,6 @@ sbin/zstreamdump
 sbin/zinject
 sbin/zhack
 sbin/zdb
-sbin/zpios
 sbin/zpool
 sbin/zfs
 usr/bin/zgenhostid
@@ -32,6 +31,7 @@ usr/share/man/man8/zstreamdump.8
 usr/share/man/man8/zpool.8
 usr/share/man/man8/zinject.8
 usr/share/man/man8/zfs.8
+usr/share/man/man8/zfs-program.8
 usr/share/man/man8/zdb.8
 usr/share/man/man8/vdev_id.8
 usr/share/man/man8/mount.zfs.8
