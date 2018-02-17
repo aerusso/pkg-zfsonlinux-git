@@ -1,9 +1,8 @@
-Source: spl-linux
+Source: spl-linux-git
 Section: kernel
 Priority: optional
 Maintainer: Debian ZFS on Linux maintainers <pkg-zfsonlinux-devel@lists.alioth.debian.org>
-Uploaders: Aron Xu <aron@debian.org>,
-           Carlos Alberto Lopez Perez <clopez@igalia.com>
+Uploaders: Antonio Russo <antonio.russo@gmail.com>
 Build-Depends: autogen,
                autotools-dev,
                debhelper (>= 9),
@@ -15,8 +14,9 @@ Homepage: http://www.zfsonlinux.org/
 Vcs-Git: git://anonscm.debian.org/pkg-zfsonlinux/spl.git
 Vcs-Browser: http://anonscm.debian.org/gitweb/?p=pkg-zfsonlinux/spl.git
 
-Package: spl-dkms
+Package: spl-git-dkms
 Architecture: all
+Conflicts: spl-dkms
 Depends: dkms (>> 2.2.1.0), file, libc-dev, libelf-dev, lsb-release, ${misc:Depends}
 Recommends: spl (>= ${source:Upstream-Version})
 Provides: spl-modules
@@ -37,11 +37,12 @@ Description: Solaris Porting Layer kernel modules for Linux
  automatically built and installed every time the kernel packages are
  upgraded.
 
-Package: spl
+Package: spl-git
 Architecture: linux-any
-Conflicts: spl-dev, splat
+Conflicts: spl-dev, splat, spl
 Depends: ${misc:Depends}, ${shlibs:Depends}
-Recommends: spl-modules | spl-dkms
+Recommends: spl-modules (>= ${source:Upstream-Version})
+Provides: spl
 Description: Solaris Porting Layer user-space utilities for Linux
  The Solaris Porting Layer (SPL) is a Linux kernel module which provides
  many of the Solaris kernel APIs. This shim layer makes it possible to

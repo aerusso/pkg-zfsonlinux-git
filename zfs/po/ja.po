@@ -18,13 +18,13 @@ msgstr ""
 
 #. Type: boolean
 #. Description
-#: ../zfs-dkms.templates:1001
+#: ../zfs-git-dkms.templates:1001
 msgid "Abort building ZFS on a 32-bit kernel?"
 msgstr "32 ビットのカーネルでの ZFS のビルドを中止しますか?"
 
 #. Type: boolean
 #. Description
-#: ../zfs-dkms.templates:1001
+#: ../zfs-git-dkms.templates:1001
 msgid "You are attempting to build ZFS against a 32-bit running kernel."
 msgstr ""
 "ZFS を 32 ビットで動作しているカーネルに対してビルドしようとしています。"
@@ -33,7 +33,7 @@ msgstr ""
 #. Description
 #. Type: boolean
 #. Description
-#: ../zfs-dkms.templates:1001 ../zfs-dkms.templates:2001
+#: ../zfs-git-dkms.templates:1001 ../zfs-dkms.templates:2001
 msgid ""
 "Although possible, building in a 32-bit environment is unsupported and "
 "likely to cause instability leading to possible data corruption. You are "
@@ -47,13 +47,13 @@ msgstr ""
 
 #. Type: boolean
 #. Description
-#: ../zfs-dkms.templates:2001
+#: ../zfs-git-dkms.templates:2001
 msgid "Abort building ZFS on an unknown kernel?"
 msgstr "未知のカーネルでの ZFS のビルドを中止しますか?"
 
 #. Type: boolean
 #. Description
-#: ../zfs-dkms.templates:2001
+#: ../zfs-git-dkms.templates:2001
 msgid ""
 "You are attempting to build ZFS against a running kernel that could not be "
 "identified as 32-bit or 64-bit. If you are not completely sure that the "
@@ -65,13 +65,13 @@ msgstr ""
 
 #. Type: note
 #. Description
-#: ../zfs-dkms.templates:3001
+#: ../zfs-git-dkms.templates:3001
 msgid "Licenses of ZFS and Linux are incompatible"
 msgstr ""
 
 #. Type: note
 #. Description
-#: ../zfs-dkms.templates:3001
+#: ../zfs-git-dkms.templates:3001
 msgid ""
 "ZFS is licensed under the Common Development and Distribution License "
 "(CDDL), and the Linux kernel is licensed under the GNU General Public "
@@ -83,7 +83,7 @@ msgstr ""
 
 #. Type: note
 #. Description
-#: ../zfs-dkms.templates:3001
+#: ../zfs-git-dkms.templates:3001
 msgid ""
 "You are going to build ZFS using DKMS in such a way that they are not going to "
 "be built into one monolithic binary. Please be aware that distributing both of "

@@ -1,2 +1,3 @@
 version=3
-http://zfsonlinux.org/ .*spl-([\d\.]+)\.tar\.gz$
+mode=git
+https://github.com/zfsonlinux/spl.git

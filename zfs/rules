@@ -126,7 +126,7 @@ ifeq ($(BUILD_UDEB), true)
 endif
 
 override_dh_strip:
-	dh_strip --dbg-package=zfs-dbg
+	dh_strip --dbg-package=zfs-git-dbg
 ifeq ($(BUILD_UDEB), true)
 	dh_strip -plibnvpair1-udeb
 	dh_strip -plibuutil1-udeb

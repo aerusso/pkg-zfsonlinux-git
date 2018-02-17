@@ -1,4 +1,4 @@
-Source: zfs-linux
+Source: zfs-linux-git
 Section: contrib/kernel
 Priority: extra
 Maintainer: Debian ZFS on Linux maintainers <pkg-zfsonlinux-devel@lists.alioth.debian.org>

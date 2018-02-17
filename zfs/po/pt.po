@@ -21,13 +21,13 @@ msgstr ""
 
 #. Type: boolean
 #. Description
-#: ../zfs-dkms.templates:1001
+#: ../zfs-git-dkms.templates:1001
 msgid "Abort building ZFS on a 32-bit kernel?"
 msgstr "Abortar a compilação de ZFS num kernel 32-bit?"
 
 #. Type: boolean
 #. Description
-#: ../zfs-dkms.templates:1001
+#: ../zfs-git-dkms.templates:1001
 msgid "You are attempting to build ZFS against a 32-bit running kernel."
 msgstr "Está a tentar compilar ZFS contra um kernel 32-bit em execução."
 
@@ -35,7 +35,7 @@ msgstr "Está a tentar compilar ZFS contra um kernel 32-bit em execução."
 #. Description
 #. Type: boolean
 #. Description
-#: ../zfs-dkms.templates:1001 ../zfs-dkms.templates:2001
+#: ../zfs-git-dkms.templates:1001 ../zfs-dkms.templates:2001
 msgid ""
 "Although possible, building in a 32-bit environment is unsupported and "
 "likely to cause instability leading to possible data corruption. You are "
@@ -49,13 +49,13 @@ msgstr ""
 
 #. Type: boolean
 #. Description
-#: ../zfs-dkms.templates:2001
+#: ../zfs-git-dkms.templates:2001
 msgid "Abort building ZFS on an unknown kernel?"
 msgstr "Abortar a compilação de ZFS num kernel desconhecido?"
 
 #. Type: boolean
 #. Description
-#: ../zfs-dkms.templates:2001
+#: ../zfs-git-dkms.templates:2001
 msgid ""
 "You are attempting to build ZFS against a running kernel that could not be "
 "identified as 32-bit or 64-bit. If you are not completely sure that the "
@@ -68,13 +68,13 @@ msgstr ""
 
 #. Type: note
 #. Description
-#: ../zfs-dkms.templates:3001
+#: ../zfs-git-dkms.templates:3001
 msgid "Licenses of ZFS and Linux are incompatible"
 msgstr "As licenças do ZFS e do Linux são incompatíveis"
 
 #. Type: note
 #. Description
-#: ../zfs-dkms.templates:3001
+#: ../zfs-git-dkms.templates:3001
 msgid ""
 "ZFS is licensed under the Common Development and Distribution License "
 "(CDDL), and the Linux kernel is licensed under the GNU General Public "
@@ -93,7 +93,7 @@ msgstr ""
 
 #. Type: note
 #. Description
-#: ../zfs-dkms.templates:3001
+#: ../zfs-git-dkms.templates:3001
 msgid ""
 "You are going to build ZFS using DKMS in such a way that they are not going to "
 "be built into one monolithic binary. Please be aware that distributing both of "

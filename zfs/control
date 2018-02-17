@@ -1,10 +1,8 @@
-Source: zfs-linux
+Source: zfs-linux-git
 Section: contrib/kernel
 Priority: optional
 Maintainer: Debian ZFS on Linux maintainers <pkg-zfsonlinux-devel@lists.alioth.debian.org>
-Uploaders: Aron Xu <aron@debian.org>,
-           Petter Reinholdtsen <pere@debian.org>,
-           Carlos Alberto Lopez Perez <clopez@igalia.com>
+Uploaders: Antonio Russo <antonio.e.russo@gmail.com>
 Build-Depends: dh-autoreconf,
                autotools-dev,
                debhelper (>= 10.2),
@@ -24,19 +22,23 @@ Homepage: http://www.zfsonlinux.org/
 Vcs-Git: git://anonscm.debian.org/pkg-zfsonlinux/zfs.git
 Vcs-Browser: http://anonscm.debian.org/gitweb/?p=pkg-zfsonlinux/zfs.git
 
-Package: libnvpair1linux
+Package: libnvpair1linux-git
 Section: contrib/libs
 Architecture: linux-any
 Depends: ${misc:Depends}, ${shlibs:Depends}
+Conflicts: libnvpair1linux
+Provides: libnvpair1linux
 Description: Solaris name-value library for Linux
  This library provides routines for packing and unpacking nv pairs for
  transporting data across process boundaries, transporting between
  kernel and userland, and possibly saving onto disk files.
 
-Package: libuutil1linux
+Package: libuutil1linux-git
 Section: contrib/libs
 Architecture: linux-any
+Conflicts: libuutil1linux
 Depends: ${misc:Depends}, ${shlibs:Depends}
+Provides: libuutil1linux
 Description: Solaris userland utility library for Linux
  This library provides a variety of glue functions for ZFS on Linux:
   * libspl: The Solaris Porting Layer userland library, which provides APIs
@@ -48,13 +50,14 @@ Description: Solaris userland utility library for Linux
     partitioning.
   * libshare: NFS, SMB, and iSCSI service integration for ZFS.
 
-Package: libzfslinux-dev
+Package: libzfslinux-git-dev
 Section: contrib/libdevel
 Architecture: linux-any
+Conflicts: libzfslinux-dev
 Depends: libzfs2linux (= ${binary:Version}), libzpool2linux (= ${binary:Version}),
  libnvpair1linux (= ${binary:Version}), libuutil1linux (= ${binary:Version}),
  ${misc:Depends}
-Provides: libnvpair-dev, libuutil-dev
+Provides: libnvpair-dev, libuutil-dev, libzfslinux-dev
 Description: OpenZFS filesystem development files for Linux
  Header files and static libraries for compiling software against
  libraries of OpenZFS filesystem.
@@ -62,10 +65,12 @@ Description: OpenZFS filesystem development files for Linux
  This package includes the development files of libnvpair1, libuutil1,
  libzpool2 and libzfs2.
 
-Package: libzfs2linux
+Package: libzfs2linux-git
 Section: contrib/libs
 Architecture: linux-any
+Conflicts: libzfs2linux
 Depends: ${misc:Depends}, ${shlibs:Depends}
+Provides: libzfs2linux
 Description: OpenZFS filesystem library for Linux
  The Z file system is a pooled filesystem designed for maximum data
  integrity, supporting data snapshots, multiple copies, and data
@@ -73,10 +78,12 @@ Description: OpenZFS filesystem library for Linux
  .
  The OpenZFS library provides support for managing OpenZFS filesystems.
 
-Package: libzpool2linux
+Package: libzpool2linux-git
 Section: contrib/libs
 Architecture: linux-any
+Conflicts: libzpool2linux
 Depends: ${misc:Depends}, ${shlibs:Depends}
+Provides: libzpool2linux
 Description: OpenZFS pool library for Linux
  The Z file system is a pooled filesystem designed for maximum data
  integrity, supporting data snapshots, multiple copies, and data
@@ -84,11 +91,12 @@ Description: OpenZFS pool library for Linux
  .
  This zpool library provides support for managing zpools.
 
-Package: zfs-dkms
+Package: zfs-git-dkms
 Architecture: all
 Pre-Depends: spl-dkms (>= ${source:Upstream-Version}), spl-dkms (<<${source:Upstream-Version}.)
 Depends: dkms (>> 2.1.1.2-5), lsb-release, ${misc:Depends}
 Recommends: zfsutils-linux (>= ${binary:Version}), zfs-zed
+Conflicts: zfs-dkms
 Provides: zfs-modules
 Description: OpenZFS filesystem kernel modules for Linux
  The Z file system is a pooled filesystem designed for maximum data
@@ -98,12 +106,14 @@ Description: OpenZFS filesystem kernel modules for Linux
  This DKMS package includes the SPA, DMU, ZVOL, and ZPL components of
  OpenZFS.
 
-Package: zfs-initramfs
+Package: zfs-git-initramfs
 Architecture: all
+Conflicts: zfs-initramfs
 Depends: initramfs-tools,
  busybox-initramfs | busybox-static | busybox,
  zfs-modules | zfs-dkms, zfsutils-linux (>= ${binary:Version}),
  ${misc:Depends}
+Provides: zfs-initramfs
 Description: OpenZFS root filesystem capabilities for Linux - initramfs
  The Z file system is a pooled filesystem designed for maximum data
  integrity, supporting data snapshots, multiple copies, and data
@@ -112,9 +122,11 @@ Description: OpenZFS root filesystem capabilities for Linux - initramfs
  This package adds OpenZFS to the system initramfs with a hook
  for the initramfs-tools infrastructure.
 
-Package: zfs-dracut
+Package: zfs-git-dracut
 Architecture: all
+Conflicts: zfs-dracut
 Depends: dracut, zfs-modules | zfs-dkms, zfsutils-linux (>= ${binary:Version}), ${misc:Depends}
+Provides: zfs-dracut
 Description: OpenZFS root filesystem capabilities for Linux - dracut
  The Z file system is a pooled filesystem designed for maximum data
  integrity, supporting data snapshots, multiple copies, and data
@@ -123,15 +135,15 @@ Description: OpenZFS root filesystem capabilities for Linux - dracut
  This package adds OpenZFS to the system initramfs with a hook
  for the dracut infrastructure.
 
-Package: zfsutils-linux
+Package: zfsutils-linux-git
 Section: contrib/admin
 Architecture: linux-any
 Depends: ${misc:Depends}, ${shlibs:Depends}, ${python3:Depends}, python3
 Recommends: lsb-base, zfs-modules | zfs-dkms, zfs-zed
 Breaks: zfs-dkms (>> ${binary:Version}), zfs-dkms (<< ${binary:Version})
 Suggests: nfs-kernel-server, samba-common-bin (>= 3.0.23), zfs-initramfs | zfs-dracut
-Conflicts: zfs, zfs-fuse, zutils
-Provides: zfsutils
+Conflicts: zfs, zfs-fuse, zutils, zfsutils
+Provides: zfsutils, zfsutils-linux
 Description: command-line tools to manage OpenZFS filesystems
  The Z file system is a pooled filesystem designed for maximum data
  integrity, supporting data snapshots, multiple copies, and data
@@ -140,10 +152,12 @@ Description: command-line tools to manage OpenZFS filesystems
  This package provides the zfs and zpool commands to create and administer
  OpenZFS filesystems.
 
-Package: zfs-zed
+Package: zfs-git-zed
 Section: contrib/admin
 Architecture: linux-any
+Conflicts: zfs-zed
 Depends: ${misc:Depends}, ${shlibs:Depends}, zfs-modules | zfs-dkms, zfsutils-linux (>= ${binary:Version})
+Provides: zfs-zed
 Description: OpenZFS Event Daemon
  The Z file system is a pooled filesystem designed for maximum data
  integrity, supporting data snapshots, multiple copies, and data
@@ -151,12 +165,14 @@ Description: OpenZFS Event Daemon
  .
  This package provides the OpenZFS Event Daemon (zed).
 
-Package: zfs-test
+Package: zfs-git-test
 Section: contrib/admin
 Architecture: linux-any
+Conflicts: zfs-test
 Depends: ${misc:Depends}, ${shlibs:Depends}, zfs-modules | zfs-dkms, zfsutils-linux (>=${binary:Version}), parted, lsscsi, mdadm, bc, ksh, fio, acl, sudo, sysstat, python
 Breaks: zfsutils-linux (<= 0.6.5.11-1)
 Replaces: zfsutils-linux (<= 0.6.5.11-1)
+Provides: zfs-test
 Description: OpenZFS test infrastructure an support scripts
  The Z file system is a pooled filesystem designed for maximum data
  integrity, supporting data snapshots, multiple copies, and data
@@ -166,16 +182,18 @@ Description: OpenZFS test infrastructure an support scripts
  testing and validating a system using OpenZFS. It is entirely optional
  and should only be installed and used in test environments.
 
-Package: zfs-dbg
+Package: zfs-git-dbg
 Section: contrib/debug
 Priority: extra
 Architecture: linux-any
+Conflicts: zfs-dbg
 Depends: libnvpair1linux (= ${binary:Version}),
          libuutil1linux (= ${binary:Version}),
          libzfs2linux (= ${binary:Version}),
          libzpool2linux (= ${binary:Version}),
          zfsutils-linux (= ${binary:Version}), zfs-zed (= ${binary:Version}),
          ${misc:Depends}
+Provides: zfs-dbg
 Description: Debugging symbols for OpenZFS userland libraries and tools
  The Z file system is a pooled filesystem designed for maximum data
  integrity, supporting data snapshots, multiple copies, and data
