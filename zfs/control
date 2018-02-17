@@ -54,8 +54,8 @@ Package: libzfslinux-git-dev
 Section: contrib/libdevel
 Architecture: linux-any
 Conflicts: libzfslinux-dev
-Depends: libzfs2linux (= ${binary:Version}), libzpool2linux (= ${binary:Version}),
- libnvpair1linux (= ${binary:Version}), libuutil1linux (= ${binary:Version}),
+Depends: libzfs2linux-git (= ${binary:Version}), libzpool2linux-git (= ${binary:Version}),
+ libnvpair1linux-git (= ${binary:Version}), libuutil1linux-git (= ${binary:Version}),
  ${misc:Depends}
 Provides: libnvpair-dev, libuutil-dev, libzfslinux-dev
 Description: OpenZFS filesystem development files for Linux
@@ -93,9 +93,9 @@ Description: OpenZFS pool library for Linux
 
 Package: zfs-git-dkms
 Architecture: all
-Pre-Depends: spl-dkms (>= ${source:Upstream-Version}), spl-dkms (<<${source:Upstream-Version}.)
+Pre-Depends: spl-git-dkms (>= ${source:Upstream-Version}), spl-git-dkms (<<${source:Upstream-Version}.)
 Depends: dkms (>> 2.1.1.2-5), lsb-release, ${misc:Depends}
-Recommends: zfsutils-linux (>= ${binary:Version}), zfs-zed
+Recommends: zfsutils-linux-git (>= ${binary:Version}), zfs-git-zed
 Conflicts: zfs-dkms
 Provides: zfs-modules
 Description: OpenZFS filesystem kernel modules for Linux
@@ -111,7 +111,7 @@ Architecture: all
 Conflicts: zfs-initramfs
 Depends: initramfs-tools,
  busybox-initramfs | busybox-static | busybox,
- zfs-modules | zfs-dkms, zfsutils-linux (>= ${binary:Version}),
+ zfs-modules | zfs-git-dkms, zfsutils-linux-git (>= ${binary:Version}),
  ${misc:Depends}
 Provides: zfs-initramfs
 Description: OpenZFS root filesystem capabilities for Linux - initramfs
@@ -125,7 +125,7 @@ Description: OpenZFS root filesystem capabilities for Linux - initramfs
 Package: zfs-git-dracut
 Architecture: all
 Conflicts: zfs-dracut
-Depends: dracut, zfs-modules | zfs-dkms, zfsutils-linux (>= ${binary:Version}), ${misc:Depends}
+Depends: dracut, zfs-modules | zfs-git-dkms, zfsutils-linux-git (>= ${binary:Version}), ${misc:Depends}
 Provides: zfs-dracut
 Description: OpenZFS root filesystem capabilities for Linux - dracut
  The Z file system is a pooled filesystem designed for maximum data
@@ -139,9 +139,8 @@ Package: zfsutils-linux-git
 Section: contrib/admin
 Architecture: linux-any
 Depends: ${misc:Depends}, ${shlibs:Depends}, ${python3:Depends}, python3
-Recommends: lsb-base, zfs-modules | zfs-dkms, zfs-zed
-Breaks: zfs-dkms (>> ${binary:Version}), zfs-dkms (<< ${binary:Version})
-Suggests: nfs-kernel-server, samba-common-bin (>= 3.0.23), zfs-initramfs | zfs-dracut
+Recommends: lsb-base, zfs-modules | zfs-git-dkms, zfs-zed
+Suggests: nfs-kernel-server, samba-common-bin (>= 3.0.23), zfs-git-initramfs | zfs-git-dracut
 Conflicts: zfs, zfs-fuse, zutils, zfsutils
 Provides: zfsutils, zfsutils-linux
 Description: command-line tools to manage OpenZFS filesystems
@@ -156,7 +155,7 @@ Package: zfs-git-zed
 Section: contrib/admin
 Architecture: linux-any
 Conflicts: zfs-zed
-Depends: ${misc:Depends}, ${shlibs:Depends}, zfs-modules | zfs-dkms, zfsutils-linux (>= ${binary:Version})
+Depends: ${misc:Depends}, ${shlibs:Depends}, zfs-modules | zfs-git-dkms, zfsutils-linux-git (>= ${binary:Version})
 Provides: zfs-zed
 Description: OpenZFS Event Daemon
  The Z file system is a pooled filesystem designed for maximum data
@@ -169,9 +168,7 @@ Package: zfs-git-test
 Section: contrib/admin
 Architecture: linux-any
 Conflicts: zfs-test
-Depends: ${misc:Depends}, ${shlibs:Depends}, zfs-modules | zfs-dkms, zfsutils-linux (>=${binary:Version}), parted, lsscsi, mdadm, bc, ksh, fio, acl, sudo, sysstat, python
-Breaks: zfsutils-linux (<= 0.6.5.11-1)
-Replaces: zfsutils-linux (<= 0.6.5.11-1)
+Depends: ${misc:Depends}, ${shlibs:Depends}, zfs-modules | zfs-git-dkms, zfsutils-linux-git (>=${binary:Version}), parted, lsscsi, mdadm, bc, ksh, fio, acl, sudo, sysstat, python
 Provides: zfs-test
 Description: OpenZFS test infrastructure an support scripts
  The Z file system is a pooled filesystem designed for maximum data
@@ -187,11 +184,11 @@ Section: contrib/debug
 Priority: extra
 Architecture: linux-any
 Conflicts: zfs-dbg
-Depends: libnvpair1linux (= ${binary:Version}),
-         libuutil1linux (= ${binary:Version}),
-         libzfs2linux (= ${binary:Version}),
-         libzpool2linux (= ${binary:Version}),
-         zfsutils-linux (= ${binary:Version}), zfs-zed (= ${binary:Version}),
+Depends: libnvpair1linux-git (= ${binary:Version}),
+         libuutil1linux-git (= ${binary:Version}),
+         libzfs2linux-git (= ${binary:Version}),
+         libzpool2linux-git (= ${binary:Version}),
+         zfsutils-linux-git (= ${binary:Version}), zfs-zed (= ${binary:Version}),
          ${misc:Depends}
 Provides: zfs-dbg
 Description: Debugging symbols for OpenZFS userland libraries and tools

@@ -18,7 +18,6 @@ Package: spl-git-dkms
 Architecture: all
 Conflicts: spl-dkms
 Depends: dkms (>> 2.2.1.0), file, libc-dev, libelf-dev, lsb-release, ${misc:Depends}
-Recommends: spl (>= ${source:Upstream-Version})
 Provides: spl-modules
 Description: Solaris Porting Layer kernel modules for Linux
  The Solaris Porting Layer (SPL) is a Linux kernel module which provides
@@ -41,7 +40,7 @@ Package: spl-git
 Architecture: linux-any
 Conflicts: spl-dev, splat, spl
 Depends: ${misc:Depends}, ${shlibs:Depends}
-Recommends: spl-modules (>= ${source:Upstream-Version})
+Recommends: spl-modules | spl-dkms
 Provides: spl
 Description: Solaris Porting Layer user-space utilities for Linux
  The Solaris Porting Layer (SPL) is a Linux kernel module which provides
