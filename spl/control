@@ -40,7 +40,7 @@ Package: spl-git
 Architecture: linux-any
 Conflicts: spl-dev, splat, spl
 Depends: ${misc:Depends}, ${shlibs:Depends}
-Recommends: spl-modules | spl-dkms
+Recommends: spl-modules
 Provides: spl
 Description: Solaris Porting Layer user-space utilities for Linux
  The Solaris Porting Layer (SPL) is a Linux kernel module which provides
