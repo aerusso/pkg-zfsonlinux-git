@@ -1,0 +1,37 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+Date: Thu, 01 Mar 2018 04:50:35 +0000
+MD5Sum:
+ e293bfc66db115ad2269fa0c4b961147            19608 Packages
+ 26651bf5f50465d1c95a2e2c229ccfaa             5392 Packages.gz
+ ab035ba09f6c1ca50fb3bc31c58ee278               38 Release
+SHA1:
+ 406a77da0a3865c3871e40983f865eb5ec4b3aa6            19608 Packages
+ fed3724dff4440102a2f09cf9bfde865c5a34d92             5392 Packages.gz
+ 5fabfbc8f2eddd5a34583b828bdc7f9bd42bca87               38 Release
+SHA256:
+ 528a6a678dd2942743068d7a40a2aae2e6198ca9e51abe15eaf1c97ce95ddd78            19608 Packages
+ 6a44840b75c4ffec4e7e18bc72da31a125d043f3f4d0525851a59d92bd66ea59             5392 Packages.gz
+ 5e74e23f657b7f30e1eebec68e7b1e8fef42aab83cd1102303434dc11dd074cd               38 Release
+SHA512:
+ a169e15a22fbde7418d3e649ecb8423a0ed15b3b9fb1e4995ab3085cf7ed3346812a406454288d541f455e8ee167adcecf220563f070fb0d272fcd0acbcd6f78            19608 Packages
+ 17ad77dd9b0b088e2286e010efaea1eaecdfe6f1a158c05cd1a8891f36aec12347bf8b9f28cdd21c8113cb66d0722ad9bb54a891f01322b570911c2e3bc9062a             5392 Packages.gz
+ 15274f03a49ddf192ecd06e7deab59fcec5a0a2bc4b69a185f38fb1fa5c50bc1863b73477e8881bdc01b08fb7ffe5f76407d2a96e65bbb70443a3baf2054a986               38 Release
+-----BEGIN PGP SIGNATURE-----
+
+iQJOBAEBCgA4FiEEewYezZ63MYOOiJcszDJOVTjS7oYFAlqXhp0aHGFudG9uaW8u
+ZS5ydXNzb0BnbWFpbC5jb20ACgkQzDJOVTjS7oZakg/+IeTjtbXXWeqQM7KGEn6h
+o68MbDzKpYspNmpQxwl1ezL4HiHJN5ZhHK5DZFSu7aIly2xfyhAVcKZTBM+dtUSH
+bGB/7RFj1z/Fok502Z/PMgHD0uF/sQ3NZSoH1ZG2Mjy2FGeCDTidYnhTF+w8IIUb
+Na06Cgjz7AUVjBdYzbYOD22w0kqtaeml8sOa02dJaLjaPPIMAmGXOQdsOdCt6IXe
+bPi/g/WZSSVCgpFGTZW+EKSQf38avuN10k8iYFgOmZgT2n27l61OxlXDuJ994tli
+odHlLEzFWqd3O6FjwmkR66HyBfzteEDw1oAsqLqaztMni/wymrcyRS26YV2pa65v
+tOF/rQMlIEunmSDoTQYna8kgwuGWgATypP5aJqrIWOwmm6XCmYJo1HKutOp/NIPK
+gxqnddbHX1HCh/HUd1qXcTBSC6cvS7mAd2zutoFPNP7RW8O4L3Ad/FZZbVqq3b9Q
+5FVAJicCJyAqLXdIRNTM5SsOkPRV3sGAo1EtjS+O5+30odiIequufO7AgG5Lx7u+
+eoIOon5UbSVEOkoCI85opxwr9GxKnbU1lUVK3NiorZcDCLUxUNHuLv+gQKHjilg8
+0/yfN0YXsHlj7C9WWa+PslSRIixhRIrYRKFlfYo0mIWLlCIIlwRaHFXXbQlQCfnu
+02YyHa0SbxMpe1aW535lGMc=
+=iTkr
+-----END PGP SIGNATURE-----
