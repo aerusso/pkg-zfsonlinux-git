@@ -1,26 +1,26 @@
 Source: zfs-linux-git
 Section: contrib/kernel
 Priority: optional
-Maintainer: Debian ZFS on Linux maintainers <pkg-zfsonlinux-devel@lists.alioth.debian.org>
+Maintainer: Antonio Russo <antonio.e.russo@gmail.com>
 Uploaders: Antonio Russo <antonio.e.russo@gmail.com>
-Build-Depends: dh-autoreconf,
-               autotools-dev,
+Build-Depends: autotools-dev,
                debhelper (>= 10.2),
+               dh-autoreconf,
+               dh-python,
                dkms (>> 2.1.1.2-5),
+               libattr1-dev,
+               libblkid-dev,
                libselinux1-dev,
                libtool,
                lsb-release,
                po-debconf,
-               uuid-dev,
-               zlib1g-dev,
                python3,
-               dh-python,
-               libblkid-dev,
-               libattr1-dev
+               uuid-dev,
+               zlib1g-dev
 Standards-Version: 4.1.2
 Homepage: http://www.zfsonlinux.org/
-Vcs-Git: git://anonscm.debian.org/pkg-zfsonlinux/zfs.git
-Vcs-Browser: http://anonscm.debian.org/gitweb/?p=pkg-zfsonlinux/zfs.git
+Vcs-Git: https://github.com/aerusso/pkg-zfsonlinux-git.git
+Vcs-Browser: https://github.com/aerusso/pkg-zfsonlinux-git
 
 Package: libnvpair1linux-git
 Section: contrib/libs
@@ -32,6 +32,8 @@ Description: Solaris name-value library for Linux
  This library provides routines for packing and unpacking nv pairs for
  transporting data across process boundaries, transporting between
  kernel and userland, and possibly saving onto disk files.
+ .
+ BEWARE: THIS IS AN EXPERIMENTAL GIT VERSION. IT MAY EAT YOUR DATA.
 
 Package: libuutil1linux-git
 Section: contrib/libs
@@ -49,14 +51,18 @@ Description: Solaris userland utility library for Linux
   * libefi: The Extensible Firmware Interface library for GUID disk
     partitioning.
   * libshare: NFS, SMB, and iSCSI service integration for ZFS.
+ .
+ BEWARE: THIS IS AN EXPERIMENTAL GIT VERSION. IT MAY EAT YOUR DATA.
 
 Package: libzfslinux-git-dev
 Section: contrib/libdevel
 Architecture: linux-any
 Conflicts: libzfslinux-dev
-Depends: libzfs2linux-git (= ${binary:Version}), libzpool2linux-git (= ${binary:Version}),
- libnvpair1linux-git (= ${binary:Version}), libuutil1linux-git (= ${binary:Version}),
- ${misc:Depends}
+Depends: libnvpair1linux-git (= ${binary:Version}),
+         libuutil1linux-git (= ${binary:Version}),
+         libzfs2linux-git (= ${binary:Version}),
+         libzpool2linux-git (= ${binary:Version}),
+         ${misc:Depends}
 Provides: libnvpair-dev, libuutil-dev, libzfslinux-dev
 Description: OpenZFS filesystem development files for Linux
  Header files and static libraries for compiling software against
@@ -64,6 +70,8 @@ Description: OpenZFS filesystem development files for Linux
  .
  This package includes the development files of libnvpair1, libuutil1,
  libzpool2 and libzfs2.
+ .
+ BEWARE: THIS IS AN EXPERIMENTAL GIT VERSION. IT MAY EAT YOUR DATA.
 
 Package: libzfs2linux-git
 Section: contrib/libs
@@ -77,6 +85,8 @@ Description: OpenZFS filesystem library for Linux
  checksums.
  .
  The OpenZFS library provides support for managing OpenZFS filesystems.
+ .
+ BEWARE: THIS IS AN EXPERIMENTAL GIT VERSION. IT MAY EAT YOUR DATA.
 
 Package: libzpool2linux-git
 Section: contrib/libs
@@ -90,12 +100,15 @@ Description: OpenZFS pool library for Linux
  checksums.
  .
  This zpool library provides support for managing zpools.
+ .
+ BEWARE: THIS IS AN EXPERIMENTAL GIT VERSION. IT MAY EAT YOUR DATA.
 
 Package: zfs-git-dkms
 Architecture: all
-Pre-Depends: spl-git-dkms (>= ${source:Upstream-Version}), spl-git-dkms (<<${source:Upstream-Version}.)
+Pre-Depends: spl-git-dkms (<<${source:Upstream-Version}.),
+             spl-git-dkms (>= ${source:Upstream-Version})
 Depends: dkms (>> 2.1.1.2-5), lsb-release, ${misc:Depends}
-Recommends: zfsutils-linux-git (>= ${binary:Version}), zfs-git-zed
+Recommends: zfs-git-zed, zfsutils-linux-git (>= ${binary:Version})
 Conflicts: zfs-dkms
 Provides: zfs-modules
 Description: OpenZFS filesystem kernel modules for Linux
@@ -105,14 +118,17 @@ Description: OpenZFS filesystem kernel modules for Linux
  .
  This DKMS package includes the SPA, DMU, ZVOL, and ZPL components of
  OpenZFS.
+ .
+ BEWARE: THIS IS AN EXPERIMENTAL GIT VERSION. IT MAY EAT YOUR DATA.
 
 Package: zfs-git-initramfs
 Architecture: all
 Conflicts: zfs-initramfs
-Depends: initramfs-tools,
- busybox-initramfs | busybox-static | busybox,
- zfs-modules | zfs-git-dkms, zfsutils-linux-git (>= ${binary:Version}),
- ${misc:Depends}
+Depends: busybox-initramfs | busybox-static | busybox,
+         initramfs-tools,
+         zfs-modules | zfs-git-dkms,
+         zfsutils-linux-git (>= ${binary:Version}),
+         ${misc:Depends}
 Provides: zfs-initramfs
 Description: OpenZFS root filesystem capabilities for Linux - initramfs
  The Z file system is a pooled filesystem designed for maximum data
@@ -121,11 +137,16 @@ Description: OpenZFS root filesystem capabilities for Linux - initramfs
  .
  This package adds OpenZFS to the system initramfs with a hook
  for the initramfs-tools infrastructure.
+ .
+ BEWARE: THIS IS AN EXPERIMENTAL GIT VERSION. IT MAY EAT YOUR DATA.
 
 Package: zfs-git-dracut
 Architecture: all
 Conflicts: zfs-dracut
-Depends: dracut, zfs-modules | zfs-git-dkms, zfsutils-linux-git (>= ${binary:Version}), ${misc:Depends}
+Depends: dracut,
+         zfs-modules | zfs-git-dkms,
+         zfsutils-linux-git (>= ${binary:Version}),
+         ${misc:Depends}
 Provides: zfs-dracut
 Description: OpenZFS root filesystem capabilities for Linux - dracut
  The Z file system is a pooled filesystem designed for maximum data
@@ -134,14 +155,18 @@ Description: OpenZFS root filesystem capabilities for Linux - dracut
  .
  This package adds OpenZFS to the system initramfs with a hook
  for the dracut infrastructure.
+ .
+ BEWARE: THIS IS AN EXPERIMENTAL GIT VERSION. IT MAY EAT YOUR DATA.
 
 Package: zfsutils-linux-git
 Section: contrib/admin
 Architecture: linux-any
-Depends: ${misc:Depends}, ${shlibs:Depends}, ${python3:Depends}, python3
+Depends: python3, ${misc:Depends}, ${python3:Depends}, ${shlibs:Depends}
 Recommends: lsb-base, zfs-modules | zfs-git-dkms, zfs-zed
-Suggests: nfs-kernel-server, samba-common-bin (>= 3.0.23), zfs-git-initramfs | zfs-git-dracut
-Conflicts: zfs, zfs-fuse, zutils, zfsutils
+Suggests: nfs-kernel-server,
+          samba-common-bin (>= 3.0.23),
+          zfs-git-initramfs | zfs-git-dracut
+Conflicts: zfs, zfs-fuse, zfsutils, zutils
 Provides: zfsutils, zfsutils-linux
 Description: command-line tools to manage OpenZFS filesystems
  The Z file system is a pooled filesystem designed for maximum data
@@ -150,12 +175,17 @@ Description: command-line tools to manage OpenZFS filesystems
  .
  This package provides the zfs and zpool commands to create and administer
  OpenZFS filesystems.
+ .
+ BEWARE: THIS IS AN EXPERIMENTAL GIT VERSION. IT MAY EAT YOUR DATA.
 
 Package: zfs-git-zed
 Section: contrib/admin
 Architecture: linux-any
 Conflicts: zfs-zed
-Depends: ${misc:Depends}, ${shlibs:Depends}, zfs-modules | zfs-git-dkms, zfsutils-linux-git (>= ${binary:Version})
+Depends: zfs-modules | zfs-git-dkms,
+         zfsutils-linux-git (>= ${binary:Version}),
+         ${misc:Depends},
+         ${shlibs:Depends}
 Provides: zfs-zed
 Description: OpenZFS Event Daemon
  The Z file system is a pooled filesystem designed for maximum data
@@ -163,12 +193,27 @@ Description: OpenZFS Event Daemon
  checksums.
  .
  This package provides the OpenZFS Event Daemon (zed).
+ .
+ BEWARE: THIS IS AN EXPERIMENTAL GIT VERSION. IT MAY EAT YOUR DATA.
 
 Package: zfs-git-test
 Section: contrib/admin
 Architecture: linux-any
 Conflicts: zfs-test
-Depends: ${misc:Depends}, ${shlibs:Depends}, zfs-modules | zfs-git-dkms, zfsutils-linux-git (>=${binary:Version}), parted, lsscsi, mdadm, bc, ksh, fio, acl, sudo, sysstat, python
+Depends: acl,
+         bc,
+         fio,
+         ksh,
+         lsscsi,
+         mdadm,
+         parted,
+         python,
+         sudo,
+         sysstat,
+         zfs-modules | zfs-git-dkms,
+         zfsutils-linux-git (>=${binary:Version}),
+         ${misc:Depends},
+         ${shlibs:Depends}
 Provides: zfs-test
 Description: OpenZFS test infrastructure an support scripts
  The Z file system is a pooled filesystem designed for maximum data
@@ -178,6 +223,8 @@ Description: OpenZFS test infrastructure an support scripts
  This package provides the OpenZFS test infrastructure for destructively
  testing and validating a system using OpenZFS. It is entirely optional
  and should only be installed and used in test environments.
+ .
+ BEWARE: THIS IS AN EXPERIMENTAL GIT VERSION. IT MAY EAT YOUR DATA.
 
 Package: zfs-git-dbg
 Section: contrib/debug
@@ -188,7 +235,8 @@ Depends: libnvpair1linux-git (= ${binary:Version}),
          libuutil1linux-git (= ${binary:Version}),
          libzfs2linux-git (= ${binary:Version}),
          libzpool2linux-git (= ${binary:Version}),
-         zfsutils-linux-git (= ${binary:Version}), zfs-zed (= ${binary:Version}),
+         zfs-zed (= ${binary:Version}),
+         zfsutils-linux-git (= ${binary:Version}),
          ${misc:Depends}
 Provides: zfs-dbg
 Description: Debugging symbols for OpenZFS userland libraries and tools
@@ -198,3 +246,5 @@ Description: Debugging symbols for OpenZFS userland libraries and tools
  .
  This package contains the debugging symbols for libzpool2linux, libzfs2linux,
  libnvpair1linux, libuutil1linux, zfs-zed and zfsutils-linux.
+ .
+ BEWARE: THIS IS AN EXPERIMENTAL GIT VERSION. IT MAY EAT YOUR DATA.
