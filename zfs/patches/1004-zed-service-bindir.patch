@@ -9,8 +9,8 @@ Bug-Debian: https://bugs.debian.org/849813
 Forwarded: no
 --- a/etc/systemd/system/zfs-zed.service.in
 +++ b/etc/systemd/system/zfs-zed.service.in
-@@ -5,7 +5,7 @@ After=zfs-import-cache.service
- After=zfs-import.target
+@@ -3,7 +3,7 @@ After=zfs-import-cache.service
+ Documentation=man:zed(8)
  
  [Service]
 -ExecStart=@sbindir@/zed -F
