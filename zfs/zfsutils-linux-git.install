@@ -5,6 +5,7 @@ lib/systemd/system/zfs-import-scan.service
 lib/systemd/system/zfs-import-cache.service
 lib/systemd/system/zfs.target
 lib/systemd/system/zfs-import.target
+lib/systemd/system-generators/
 lib/systemd/system-preset/
 usr/lib/modules-load.d/ lib/
 lib/udev/
@@ -31,6 +32,7 @@ usr/share/man/man8/zstreamdump.8
 usr/share/man/man8/zpool.8
 usr/share/man/man8/zinject.8
 usr/share/man/man8/zfs.8
+usr/share/man/man8/zfs-mount-generator.8
 usr/share/man/man8/zfs-program.8
 usr/share/man/man8/zdb.8
 usr/share/man/man8/vdev_id.8
